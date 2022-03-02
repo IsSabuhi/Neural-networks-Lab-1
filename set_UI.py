@@ -8,7 +8,7 @@ class Window:
     Cwidth = 100
     Cheight = 100
 
-    def __init__(self, width, height, title="MyWindow", resizable=(False, False), icon=r"resources/images.ico" ):
+    def __init__(self, width, height, title="MyWindow", icon=r"resources/images.ico" ):
         self.root = Tk()
         self.root.title(title)
         self.root.geometry(f"{width}x{height}")
@@ -25,6 +25,9 @@ class Window:
         self.r4 = Radiobutton(self.right_frame, text='4', variable=self.var, value=4)
         self.r5 = Radiobutton(self.right_frame, text='5', variable=self.var, value=5)
         self.r6 = Radiobutton(self.right_frame, text='6', variable=self.var, value=6)
+        self.r7 = Radiobutton(self.right_frame, text='7', variable=self.var, value=7)
+        self.r8 = Radiobutton(self.right_frame, text='8', variable=self.var, value=8)
+        self.r9 = Radiobutton(self.right_frame, text='9', variable=self.var, value=9)
         self.cv = Canvas(self.top_frame, width=self.Cwidth, height=self.Cheight, bg='white')
         self.image = PIL.Image.new("RGB", (width, height))
         self.draw = ImageDraw.Draw(self.image)
@@ -34,17 +37,17 @@ class Window:
         self.buttonSave = Button(self.left_frame, text="Сохранить веса", width=20)
         self.buttonError = Button(self.left_frame, text="Ошибка", width=20)
         self.buttonClear = Button(self.left_frame, text="Очистить", command=self.clear, width=20)
-        self.lbl1 = Label(self.left_frame, text="123123123", font="Arial 10", fg="black")
-        self.lbl2 = Label(self.left_frame, text="qweqweqweqwe", font="Arial 9", width=15)
+        self.lbl1 = Label(self.top_frame, text="23123123123", font="Arial 10", fg="black")
+        self.lbl2 = Label(self.top_frame, text="вфыавыфавыа", font="Arial 9", width=15)
         if icon:
             self.root.iconbitmap(icon)
 
     def draw_widgets(self):
         self.cv.bind("<B1-Motion>", self.paint)
-        self.cv.pack(padx=20, pady=20)
-        self.top_frame.pack(anchor=NW, side=LEFT)
-        self.left_frame.pack(anchor=CENTER, side=LEFT)
-        self.right_frame.pack(anchor=NE, side=LEFT, fill=Y, expand="yes")
+        self.cv.pack(side=LEFT)
+        self.right_frame.pack(anchor=NE, side=RIGHT, expand="yes", fill=Y)
+        self.top_frame.pack(side=TOP, fill=Y, pady=20, padx=20)
+        self.left_frame.pack(side=TOP, fill=Y, pady=20, padx=20, ipady=10)
         self.r0.pack(side=TOP)
         self.r1.pack(side=TOP)
         self.r2.pack(side=TOP)
@@ -52,12 +55,15 @@ class Window:
         self.r4.pack(side=TOP)
         self.r5.pack(side=TOP)
         self.r6.pack(side=TOP)
+        self.r7.pack(side=TOP)
+        self.r8.pack(side=TOP)
+        self.r9.pack(side=TOP)
+        self.lbl1.pack(side=TOP, pady=10)
+        self.lbl2.pack(side=TOP)
         self.buttonRecognize.pack()
         self.buttonTeach.pack()
         self.buttonError.pack()
         self.buttonClear.pack()
-        self.lbl1.pack(side=TOP)
-        self.lbl2.pack(side=TOP)
 
     def run(self):
         self.draw_widgets()
@@ -72,4 +78,3 @@ class Window:
     def clear(self):
         self.cv.delete("all")
         self.draw.rectangle((0, 0, self.Cwidth, self.Cheight), fill=(255, 255, 255, 255))
-
