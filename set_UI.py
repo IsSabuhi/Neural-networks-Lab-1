@@ -37,8 +37,8 @@ class Window:
         self.buttonSave = Button(self.left_frame, text="Сохранить веса", width=20)
         self.buttonError = Button(self.left_frame, text="Ошибка", width=20)
         self.buttonClear = Button(self.left_frame, text="Очистить", command=self.clear, width=20)
-        self.lbl1 = Label(self.top_frame, text="23123123123", font="Arial 10", fg="black")
-        self.lbl2 = Label(self.top_frame, text="вфыавыфавыа", font="Arial 9", width=15)
+        self.lbl1 = Label(self.top_frame, text=" ", font="Arial 10", fg="black")
+        self.lbl2 = Label(self.top_frame, text=" ", font="Arial 9", width=15)
         if icon:
             self.root.iconbitmap(icon)
 

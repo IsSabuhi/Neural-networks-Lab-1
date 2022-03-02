@@ -1,3 +1,4 @@
+import Neuron
 from set_UI import Window
 
 if __name__ == "__main__":
